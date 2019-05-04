@@ -40,6 +40,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     public Gameplay() {
 
        numGenerator();
+
+       //Check to see what the numbers are for testing
+        // Purposes
         System.out.print(randomnum + "second is " + randomnum2);
         map = new MapGenerator(randomnum,randomnum2);
         addKeyListener(this);
