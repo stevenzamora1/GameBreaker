@@ -24,11 +24,14 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int playerX = 310;
     private int ballPosx = 120;
     private int ballPosy = 350;
-    private int ballXdir= -1;
-    private int ballYdir= -2;
+    private int ballXdir= +1;
+    private int ballYdir= +2;
     private MapGenerator map;
     private int randomnum = 1;
     private int randomnum2 = 2;
+    public Color v = Color.blue;
+    public int count;
+
 
     public void numGenerator() {
 
@@ -41,15 +44,41 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
        numGenerator();
 
-       //Check to see what the numbers are for testing
-        // Purposes
-        System.out.print(randomnum + "second is " + randomnum2);
+
         map = new MapGenerator(randomnum,randomnum2);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         timer = new Timer(delay, this);
         timer.start();
+
+    }
+
+    public void colorGenerator(){
+        randomnum = (int) (Math.random() * 10) + 1 ;
+
+        switch(randomnum){
+            case 1 : v = Color.CYAN;
+                break;
+            case 2 : v = Color.red;
+                break;
+            case 3 : v = Color.magenta;
+                break;
+            case 4 : v = Color.green;
+                break;
+            case 5 : v = Color.YELLOW;
+                break;
+            case 6 : v = Color.orange;
+                break;
+            case 7 : v = Color.PINK;
+                break;
+            case 8 : v = Color.blue;
+                break;
+            case 9 : v = Color.white;
+                break;
+
+
+        }
     }
 
     public void paint(Graphics g) {
@@ -62,7 +91,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         map.draw((Graphics2D)g);
 
         // borders
-        g.setColor(Color.yellow);
+        g.setColor(v);
         g.fillRect(0, 0, 3, 592);
         g.fillRect(0, 0, 692, 3);
         g.fillRect(691, 0, 3, 592);
@@ -73,11 +102,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.drawString("" + score, 590, 30);
 
         // paddle
-        g.setColor(Color.green);
+        g.setColor(v );
         g.fillRect(playerX, 550, 100, 8);
 
         // the ball
-        g.setColor(Color.yellow);
+        g.setColor(v);
         g.fillOval(ballPosx, ballPosy, 20, 20);
 
         if(totalBricks == 0) {
@@ -125,6 +154,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         timer.start();
 
         if(play) {
+            count++;
+            if(count == 80){
+                count = 0;
+                colorGenerator();
+            }
             if(new Rectangle(ballPosx, ballPosy, 20 , 20).intersects(new Rectangle(playerX,550,100,8))) {
                 ballYdir = -ballYdir;
             }
@@ -141,6 +175,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
                         Rectangle ballRect = new Rectangle(ballPosx, ballPosy, 20, 20);
                         Rectangle brickRect = rect;
+
 
 
                         if(ballRect.intersects(brickRect)) {
@@ -225,8 +260,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             play = true;
             ballPosx = 120;
             ballPosy = 350;
-            ballXdir = -1;
-            ballYdir = -2;
+            ballXdir = +1;
+            ballYdir = +2;
             playerX = 310;
             score = 0;
             totalBricks = 36;
