@@ -22,10 +22,21 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int delay = 8;
     private int score = 0;
     private int playerX = 310;
+
+    //First Ball
     private int ballPosx = 120;
     private int ballPosy = 350;
     private int ballXdir= +1;
     private int ballYdir= +2;
+
+    //Second Ball
+    private int ball2Posx = 420;
+    private int ball2Posy = 350;
+    private int ball2Xdir= +1;
+    private int ball2Ydir= +2;
+
+    private boolean secondball = false;
+
     private MapGenerator map;
     private int randomnum = 1;
     private int randomnum2 = 2;
@@ -109,6 +120,23 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.setColor(v);
         g.fillOval(ballPosx, ballPosy, 20, 20);
 
+
+        //Second Ball
+       if(secondball == true){
+           // the ball
+           g.setColor(v);
+           g.fillOval(ball2Posx, ball2Posy, 20, 20);
+
+           g.setColor(v );
+           g.fillRect(playerX, 550, 130, 8);
+
+       }
+
+       else{
+           g.setColor(v );
+           g.fillRect(playerX, 550, 100, 8);
+       }
+
         if(totalBricks == 0) {
 
             play = false;
@@ -159,9 +187,29 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 count = 0;
                 colorGenerator();
             }
-            if(new Rectangle(ballPosx, ballPosy, 20 , 20).intersects(new Rectangle(playerX,550,100,8))) {
-                ballYdir = -ballYdir;
+
+
+            //Detects if there is a second ball too make the width of the the player higher
+            if(secondball == true) {
+                if(new Rectangle(ballPosx, ballPosy, 20 , 20).intersects(new Rectangle(playerX,550,130,8))) {
+                    ballYdir = -ballYdir;
+                }
+
+                if(new Rectangle(ball2Posx, ball2Posy, 20 , 20).intersects(new Rectangle(playerX,550,130,8))) {
+                    ball2Ydir = -ball2Ydir;
+                }
             }
+
+            else {
+                if (new Rectangle(ballPosx, ballPosy, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))) {
+                    ballYdir = -ballYdir;
+                }
+
+                if (new Rectangle(ball2Posx, ball2Posy, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8))) {
+                    ball2Ydir = -ball2Ydir;
+                }
+            }
+
 
             A: for(int i =0; i <map.map.length; i++) {
                 for(int j =0; j < map.map[0].length; j++) {
@@ -174,10 +222,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
                         Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
                         Rectangle ballRect = new Rectangle(ballPosx, ballPosy, 20, 20);
+                        Rectangle ball2Rect = new Rectangle(ball2Posx, ball2Posy, 20, 20);
                         Rectangle brickRect = rect;
 
 
-
+                        //Detects if the first ball hits a block
                         if(ballRect.intersects(brickRect)) {
                             map.setbrickValue(0, i, j);
                             totalBricks--;
@@ -199,10 +248,32 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                         }
 
 
+                        //Dectects if the second ball hits a block
+                        if(ball2Rect.intersects(brickRect)) {
+                            map.setbrickValue(0, i, j);
+                            totalBricks--;
+                            score +=5;
+
+
+                            if(ball2Posx + 19 <= brickRect.x || ball2Posx + 1 >= brickRect.x + brickRect.width) {
+
+                                ball2Xdir = -ball2Xdir;
+
+                            }
+
+                            else {
+                                ball2Ydir =-ball2Ydir;
+                            }
+
+                            break A;
+
+                        }
+
+
                     }
                 }
             }
-
+            //Ball 1
             ballPosx += ballXdir;
             ballPosy += ballYdir;
             if(ballPosx < 0) {
@@ -216,6 +287,22 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
             if(ballPosx > 670) {
                 ballXdir = -ballXdir;
+            }
+
+            //ball2
+            ball2Posx += ball2Xdir;
+            ball2Posy += ball2Ydir;
+            if(ball2Posx < 0) {
+
+                ball2Xdir = -ball2Xdir;
+
+            }
+            if(ball2Posy < 0) {
+                ball2Ydir = -ball2Ydir;
+            }
+
+            if(ball2Posx > 670) {
+                ball2Xdir = -ball2Xdir;
             }
 
 
@@ -252,12 +339,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
 
 
-
-
         if(e.getKeyCode() == KeyEvent.VK_ENTER)
         {
 
             play = true;
+            secondball = false;
+
             ballPosx = 120;
             ballPosy = 350;
             ballXdir = +1;
@@ -272,6 +359,30 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         }
 
+        //Method to create two new balls
+        //And create two paddles
+        if(e.getKeyCode() == KeyEvent.VK_2){
+            play = true;
+            secondball = true;
+
+            ballPosx = 120;
+            ballPosy = 350;
+            ballXdir = -1;
+            ballYdir = -2;
+
+            ball2Posx = 420;
+            ball2Posy = 350;
+            ball2Xdir = +1;
+            ball2Ydir = +2;
+
+            playerX = 310;
+            score = 0;
+            totalBricks = 36;
+
+            numGenerator();
+
+            map = new MapGenerator(randomnum, randomnum2);
+        }
 
 
 
@@ -282,13 +393,28 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     private void moveLeft() {
         play = true;
-        playerX -= 25;
+
+
+        if(secondball == true){
+            playerX -= 40;
+
+        }
+
+        else
+            playerX -= 25;
+
 
     }
 
     private void moveRight() {
         play = true;
-        playerX += 25;
+        if(secondball == true){
+            playerX += 40;
+
+        }
+
+        else
+            playerX += 25;
 
     }
 
