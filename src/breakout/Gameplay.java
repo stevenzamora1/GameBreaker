@@ -23,13 +23,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     private int score = 0;
     private int playerX = 310;
 
-    //First Ball
+    //First Ball Details
     private int ballPosx = 120;
     private int ballPosy = 350;
     private int ballXdir= +1;
     private int ballYdir= +2;
 
-    //Second Ball
+    //Second Ball Deatils
     private int ball2Posx = 420;
     private int ball2Posy = 350;
     private int ball2Xdir= +1;
@@ -65,6 +65,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     }
 
+
+    //Generates a random color
     public void colorGenerator(){
         randomnum = (int) (Math.random() * 10) + 1 ;
 
@@ -93,8 +95,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
     }
 
     public void paint(Graphics g) {
-        // background
 
+        // background
         g.setColor(Color.black);
         g.fillRect(1, 1, 692, 592);
 
@@ -121,7 +123,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         g.fillOval(ballPosx, ballPosy, 20, 20);
 
 
-        //Second Ball
+        //Will Draw the second ball if the the user asks for it to be drawn
        if(secondball == true){
            // the ball
            g.setColor(v);
@@ -133,7 +135,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
        }
 
        else{
-           g.setColor(v );
+           g.setColor(v);
            g.fillRect(playerX, 550, 100, 8);
        }
 
@@ -151,6 +153,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
             g.setFont(new Font("serif", Font.BOLD, 20));
             g.drawString("Press enter to restart", 230, 400);
+
+            // Message to alert the user you could play with two balls
+            g.setColor(Color.white);
+            g.setFont(new Font("serif", Font.BOLD, 25));
+            g.drawString("Press 2 to have two balls" , 300, 330);
         }
 
         if(ballPosy > 570) {
@@ -165,7 +172,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("Game Over", 238, 300);
 
-
+            // Message to alert the user you can play with two balls
+            g.setColor(Color.white);
+            g.setFont(new Font("serif", Font.BOLD, 25));
+            g.drawString("Press 2 for 2 balls" , 380, 320);
 
             g.setFont(new Font("serif", Font.BOLD, 20));
             g.drawString("Score: " + score, 265, 320);
@@ -174,6 +184,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.drawString("Press enter to restart", 228, 400);
 
         }
+
+
     }
 
 
@@ -273,7 +285,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                     }
                 }
             }
-            //Ball 1
+            //Changes the postion of ball 1
             ballPosx += ballXdir;
             ballPosy += ballYdir;
             if(ballPosx < 0) {
@@ -289,7 +301,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
                 ballXdir = -ballXdir;
             }
 
-            //ball2
+            //If Ball 2 is active then this changes the postion of the second ball
             ball2Posx += ball2Xdir;
             ball2Posy += ball2Ydir;
             if(ball2Posx < 0) {
@@ -317,6 +329,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
     public void keyPressed(KeyEvent e) {
 
+        //Will Move player to the right if the right key is pressed
         if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
             if(playerX >= 600) {
                 playerX = 600;
@@ -327,6 +340,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             }
         }
 
+        //Will move player to the left if the left key is pressed
         if(e.getKeyCode() == KeyEvent.VK_LEFT) {
             if(playerX < 10) {
                 playerX = 10;
@@ -338,7 +352,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         }
 
 
-
+        /*This method will restart the game with
+        different number of blocks and different
+        color blocks
+        */
         if(e.getKeyCode() == KeyEvent.VK_ENTER)
         {
 
@@ -349,7 +366,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             ballPosy = 350;
             ballXdir = +1;
             ballYdir = +2;
-            playerX = 310;
+            playerX = 300;
             score = 0;
             totalBricks = 36;
             numGenerator();
@@ -359,8 +376,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
         }
 
-        //Method to create two new balls
-        //And create two paddles
+        /*This method will restart the game with
+        two balls instead of one, it also will
+        alter the paddle so that there is slightly bigger
+        and moves slightly faster
+         */
         if(e.getKeyCode() == KeyEvent.VK_2){
             play = true;
             secondball = true;
