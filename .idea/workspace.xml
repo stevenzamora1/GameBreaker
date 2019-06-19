@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="497c57f5-0517-4da9-b40b-06d16833937e" name="Default Changelist" comment="This change brings with it the abitlity of the border, paddle and ball changing color at every 8 counts">
+    <list default="true" id="497c57f5-0517-4da9-b40b-06d16833937e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/breakout/Gameplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/breakout/Gameplay.java" afterDir="false" />
     </list>
@@ -16,7 +16,7 @@
     <session id="-96249948">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="1" />
@@ -38,15 +38,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2900" />
+          <entry key="java" value="2945" />
           <entry key="md" value="2" />
-          <entry key="txt" value="332" />
+          <entry key="txt" value="533" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2900" />
-          <entry key="PLAIN_TEXT" value="334" />
+          <entry key="JAVA" value="2945" />
+          <entry key="PLAIN_TEXT" value="535" />
         </counts>
       </usages-collector>
     </session>
@@ -65,8 +65,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/breakout/Gameplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="189" column="24" lean-forward="true" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
+            <state relative-caret-position="278">
+              <caret line="178" column="58" selection-start-line="178" selection-start-column="58" selection-end-line="178" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,7 +77,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/breakout/MapGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
+            <state relative-caret-position="953">
               <caret line="65" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -109,7 +109,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="96" />
+    <option name="x" value="60" />
     <option name="y" value="23" />
     <option name="width" value="1488" />
     <option name="height" value="952" />
@@ -213,12 +213,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557163865068</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added comment code and added text after the game has ended to alert the player that there is the ability too press 2 too have two balls on the screen.">
+      <created>1559349247592</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559349247592</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="96" y="23" width="1488" height="952" extended-state="0" />
-    <editor active="true" />
+    <frame x="60" y="23" width="1488" height="952" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14038728" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -229,7 +235,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20581396" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20581396" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -255,7 +261,8 @@
     <MESSAGE value="Added comment code for the reason why the numbers are being printed out in the console" />
     <MESSAGE value="This change brings with it the abitlity of the border, paddle and ball changing color at every 8 counts" />
     <MESSAGE value="This brings the ability of being able to press 2 on the keyboard&#10;and have there be two balls on the screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="This brings the ability of being able to press 2 on the keyboard&#10;and have there be two balls on the screen" />
+    <MESSAGE value="Added comment code and added text after the game has ended to alert the player that there is the ability too press 2 too have two balls on the screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comment code and added text after the game has ended to alert the player that there is the ability too press 2 too have two balls on the screen." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/package-info.java" />
@@ -271,7 +278,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/breakout/MapGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
+        <state relative-caret-position="953">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -281,8 +288,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/breakout/Gameplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="189" column="24" lean-forward="true" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
+        <state relative-caret-position="278">
+          <caret line="178" column="58" selection-start-line="178" selection-start-column="58" selection-end-line="178" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

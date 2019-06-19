@@ -172,16 +172,16 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("Game Over", 238, 300);
 
-            // Message to alert the user you can play with two balls
-            g.setColor(Color.white);
-            g.setFont(new Font("serif", Font.BOLD, 25));
-            g.drawString("Press 2 for 2 balls" , 380, 320);
-
             g.setFont(new Font("serif", Font.BOLD, 20));
             g.drawString("Score: " + score, 265, 320);
 
             g.setFont(new Font("serif", Font.BOLD, 20));
-            g.drawString("Press enter to restart", 228, 400);
+            g.drawString("Press enter to restart", 228, 340);
+
+            // Message to alert the user you can play with two balls
+            g.setColor(Color.blue);
+            g.setFont(new Font("serif", Font.BOLD, 25));
+            g.drawString("Press 2 for 2 balls" , 230, 400);
 
         }
 
